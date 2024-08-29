@@ -1,0 +1,248 @@
+body, h2, form, input, button {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: Arial, sans-serif;
+ }
+ 
+ /* Style the form container */
+ .form-container {
+     width: 100%;
+     max-width: 400px;
+     margin: 50px auto;
+     padding: 20px;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     background-color: #f9f9f9;
+ }
+ 
+ /* Style the form */
+ form {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ /* Style the form heading */
+ form h2 {
+     margin-bottom: 20px;
+     text-align: center;
+     color: #333;
+ }
+ 
+ /* Style the form labels */
+ form label {
+     margin-bottom: 5px;
+     color: #555;
+ }
+ 
+ /* Style the form inputs */
+ form input {
+     margin-bottom: 15px;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 16px;
+     color: #333;
+ }
+ 
+ /* Style the form button */
+ form button {
+     padding: 10px;
+     border: none;
+     border-radius: 5px;
+     background-color: #5cb85c;
+     color: white;
+     font-size: 16px;
+     cursor: pointer;
+ }
+ 
+ /* Add hover effect to the button */
+ form button:hover {
+     background-color: #4cae4c;
+ }
+ /* Navbar container */
+.navbar {
+    background-color:#121111d1;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.navbar-brand:hover {
+    color: #007bff;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 8, 8, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.nav-item {
+    margin: 0 0.5rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: #343a40;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.nav-link.active {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.nav-link.disabled {
+    color: #6c757d;
+}
+
+.dropdown-menu {
+    background-color: #121111;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+    color: #343a40;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #e9ecef;
+}
+
+/* Sign In button */
+#login-btn {
+    margin-left: 1rem;
+    color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#login-btn:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+/* register.css */
+
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Background image */
+
+/* Header styles */
+h1 {
+    font-size: 3em;
+    margin: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Subheader styles */
+h3 {
+    font-size: 1.5em;
+    margin: 0.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* Footer styles */
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 1em;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: #fff;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    color: #333;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff5f6d;
+    background-image: linear-gradient(to right, #ff5f6d , #ffc371);
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-button:hover {
+    background-image: linear-gradient(to right, #ff5f6d , #ff9966);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

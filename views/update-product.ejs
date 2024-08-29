@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Product</title>
+  <style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+form h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    background-color: #fafafa;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+  </style>
+</head>
+<body>
+  
+  <form id="updateProductForm" method="POST" action="/product/update/<%= product._id %>">
+    <div>
+      <label for="name">Product Name:</label>
+      <input type="text" id="name" name="name" value="<%= product.name %>">
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" value="<%= product.price %>">
+    </div>
+    <div>
+      <label for="img">Image URL:</label>
+      <input type="text" id="img" name="img" value="<%= product.img %>">
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description"><%= product.description %></textarea>
+    </div>
+    <button type="submit">Update Product</button>
+  </form>
+
+  <script>
+    document.getElementById("updateProductForm").addEventListener("submit", function (e) {
+  const name = document.getElementById("name").value.trim();
+  const price = document.getElementById("price").value.trim();
+  const img = document.getElementById("img").value.trim();
+  const description = document.getElementById("description").value.trim();
+ 
+  if (!name || !price || !img || !description) {
+    alert("All fields are required!");
+    e.preventDefault(); // Prevent form submission if validation fails
+  }
+});
+  </script>
+</body>
+</html>

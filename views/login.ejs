@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+    <div class="form-container">
+        <form action="/users" method="post" id="login_form">
+            <h2>Login</h2>
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required>
+
+            
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required> -->
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+          const login_form = document.getElementById("login_form");
+          login_form.addEventListener("submit",async(e)=>{
+               e.preventDefault();
+               
+               let email = document.getElementById('email').value;
+               let password = document.getElementById('password').value;
+               try {
+                    let res = await fetch("/login",{
+                    method: "POST",
+                    headers:{"Content-type":"application/json"},
+                    body: JSON.stringify({
+                         email,password
+                    })
+               });
+               if(res.status==200){
+                    location.assign("/");
+                    return;
+               }
+               console.log(JSON.parse(res.body));
+               } catch {
+                    console.log("We fucked up");
+                    console.log(err);
+               }
+             
+          })
+    </script>
+    <%- include('partials/footer') %>  
+</body>
+</html>

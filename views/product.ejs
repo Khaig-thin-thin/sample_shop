@@ -1,0 +1,78 @@
+<%- include('partials/header'); %>
+<%- include('partials/nav') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>product</title>
+     <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+     <div class="container">
+          <% if (locals.product) { %>
+           <%- include ('partials/selection-section',{selection: product}) %>
+           <% } else { %>
+            <h2 class="indo-sorry">
+               Sorry we currently don't have any products available right now.
+            </h2>
+            <p class="contact">
+               If you have any inqury, please contact our <a>customer support.</a>
+            </p>
+          <% } %>
+     </div>
+     <script>
+          const search_bar = document.getElementById('search_bar');
+          const search_input = search_bar.querySelector('input[name="keyword"]');
+          
+          var r;
+          search_bar.addEventListener("submit", async (event) => {
+               event.preventDefault();
+               let keyword = encodeURIComponent(search_bar.keyword.value);
+               if(keyword === ""){
+                    return;
+               }
+               try{
+                    let response = await fetch(`/find-products?keyword=${keyword}` ,{
+                    method : 'GET',
+                    headers : {
+                         "Content-Type" : "application/json"
+                    }
+                    
+               })
+               if(response.status === 200){
+                    response.json().then(data => {
+                         r = data.products
+                         document.querySelector(".container").innerHTML = data.html
+                    }).catch(err => console.log(err))
+               }
+               }catch(err){
+                    console.log(err);
+               }
+          })
+          // Event listener for clearing the search bar
+         search_input.addEventListener("input", async () => {
+             if (search_input.value.trim() === "") {
+                 try {
+                     let response = await fetch(`/find-products?keyword=`, {
+                         method: 'GET',
+                         headers: {
+                             "Content-Type": "application/json"
+                         }
+                     });
+      
+                     if (response.status === 200) {
+                         let data = await response.json();
+                         document.querySelector(".container").innerHTML = data.html;
+                     }
+                 } catch (err) {
+                     console.log(err);
+                 }
+             }
+         });
+      
+      
+     </script>
+</body>
+</html>
+<%- include('partials/footer')%>

@@ -1,0 +1,16 @@
+const expreess = require("express");
+const productRouter = expreess.Router();
+const {productGet, addProduct,searchProduct, viewProduct, productDetails, updateProduct, productUpdateGet, deleteProduct}=require("../controller/productController");
+const {productPost}=require("../controller/productController");
+const {authenticated,adminOnly} = require("../middleware/middleware");
+productRouter.use(authenticated);
+productRouter.get("/product", productGet );
+productRouter.post("/product", productPost );
+productRouter.get("/add-products",adminOnly,addProduct);
+productRouter.get('/find-products', adminOnly, searchProduct);
+productRouter.get('/view-products/:id', adminOnly, viewProduct);
+productRouter.get("/product/:id/details",adminOnly,productDetails);
+productRouter.post("/product/update/:id",adminOnly,updateProduct);
+productRouter.get('/product/update/:id',adminOnly,productUpdateGet);
+productRouter.delete('/product/:id/delete',adminOnly,deleteProduct);
+module.exports=productRouter;

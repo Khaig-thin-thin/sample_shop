@@ -1,0 +1,154 @@
+<%- include('partials/header'); %>
+<%- include('partials/nav') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>product</title>
+     <link rel="stylesheet" href="/static/register.css">
+     <style>
+          body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Form Styles */
+form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Error Message Styles */
+.error {
+    font-size: 14px;
+    color: #d9534f;
+    margin-top: 5px;
+}
+
+/* Button Styles */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+     </style>
+</head>
+<body>
+     <div class="container">
+          <form action="" method="post" id="add_product_form">
+               <h2>Add New Product</h2>
+               <div class="mb-3">
+                 <label for="name" class="form-label">Name</label>
+                 <input type="text" class="form-control" name="name" id="name" required>
+                 <div class="name error text-danger"></div>
+               </div>
+               <div class="mb-3">
+                 <label for="price" class="form-label">Price</label>
+                 <input type="number" class="form-control" name="price" id="price" required>
+                 <div class="price error text-danger"></div>
+               </div>
+               <div class="mb-3">
+                 <label for="description" class="form-label">Description</label>
+                 <input type="text" class="form-control" name="description" id="description" required>
+                 <div class="description error text-danger"></div>
+               </div>
+               <div class="mb-3">
+                 <label for="img" class="form-label">Image URL</label>
+                 <input type="url" class="form-control" name="img" id="img" required>
+                 <div class="img error text-danger"></div>
+               </div>
+               <div class="mb-3">
+                 <button type="submit" class="btn btn-primary">Add</button>
+               </div>
+               
+             
+     </div>
+     <script>
+          const form = document.getElementById("add_product_form");
+          
+          form.addEventListener("submit", async (e) => {
+              e.preventDefault();
+          
+              let name = document.getElementById("name").value;
+              let price = document.getElementById("price").value;
+              let description = document.getElementById("description").value;
+              let img = document.getElementById("img").value;
+              
+              try {
+                  let res = await fetch("/product", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify({
+                          name,
+                          price,
+                          description,
+                          img
+                      })
+                  });
+          
+                  if (res.status === 201) {
+                      alert("Product Added Successfully");
+                      form.reset();
+                  }
+              } catch (err) {
+                  alert("Something Went Wrong");
+              }
+          });
+          </script>
+          
+     
+</body>
+</html>
+<%- include('partials/footer')%>]
